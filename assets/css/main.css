@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px theme('colors.blue.500'); }
+  50% { box-shadow: 0 0 20px theme('colors.blue.500'), 0 0 30px theme('colors.blue.400'); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent;
+}
+
+/* Glass morphism */
+.glass {
+  @apply bg-white/10 backdrop-blur-lg border border-white/20;
+}
+
+/* Hover animations */
+.hover-lift {
+  @apply transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl;
+}
+
+.hover-glow {
+  @apply transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25;
+}
