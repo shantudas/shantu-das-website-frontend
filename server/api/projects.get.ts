@@ -10,57 +10,47 @@ export default defineEventHandler(async (event) => {
       technologies: ['Android', 'Kotlin', 'AI Integration', 'Clean Architecture', 'Firebase'],
       link: 'https://www.patrons.ltd/',
       github: null,
-      logo: null,
+      coverImage: '/projects/project_cover_niyog.jpg',
       featured: true
     },
     {
       id: 2,
-      title: 'Blaze',
-      description: 'Advanced identity verification application featuring facial recognition and document scanning for secure user authentication. Integrated with Vertex AI for accurate and scalable verification workflows.',
-      technologies: ['Flutter', 'Dart', 'Vertex AI', 'Facial Recognition', 'Document Scanning'],
+      title: 'MUV',
+      description: 'Advanced mobility and transportation application with real-time tracking, route optimization, and seamless user experience. Built with modern Android architecture and clean design principles.',
+      technologies: ['Android', 'Kotlin', 'Google Maps', 'Real-time Tracking', 'Material Design'],
       link: 'https://www.patrons.ltd/',
       github: null,
-      logo: null,
+      coverImage: '/projects/project_cover_muv.jpg',
       featured: true
     },
     {
       id: 3,
-      title: 'E-commerce Mobile App',
-      description: 'Full-featured mobile e-commerce application with payment integration, inventory management, and real-time order tracking. Built with modern Android architecture components.',
-      technologies: ['Android', 'Kotlin', 'MVVM', 'Room Database', 'Payment Integration'],
-      link: null,
+      title: 'MUV HRT',
+      description: 'Heart rate monitoring integration for the MUV platform, featuring health tracking, data analytics, and personalized insights for enhanced user wellness and safety.',
+      technologies: ['Android', 'Health APIs', 'Data Analytics', 'Heart Rate Monitoring', 'Kotlin'],
+      link: 'https://www.patrons.ltd/',
       github: null,
-      logo: null,
-      featured: false
+      coverImage: '/projects/project_cover_muv_hrt.jpg',
+      featured: true
     },
     {
       id: 4,
-      title: 'Task Management App',
-      description: 'Cross-platform productivity application built with Flutter, featuring team collaboration, project tracking, and real-time synchronization across devices.',
-      technologies: ['Flutter', 'Firebase', 'State Management', 'Real-time Sync', 'Cross-platform'],
+      title: 'CoSpace',
+      description: 'Collaborative workspace application that enhances team productivity with shared workspaces, real-time collaboration tools, and seamless communication features.',
+      technologies: ['Flutter', 'Firebase', 'Real-time Collaboration', 'Cross-platform', 'State Management'],
       link: null,
       github: null,
-      logo: null,
+      coverImage: '/projects/project_cover_cospace.jpg',
       featured: false
     },
     {
       id: 5,
-      title: 'Weather Dashboard',
-      description: 'Beautiful weather application with location-based forecasts, interactive maps, and weather alerts. Showcases modern UI/UX design principles.',
-      technologies: ['Android', 'Kotlin', 'API Integration', 'Material Design', 'Location Services'],
+      title: 'Frontliner',
+      description: 'Essential services management platform designed for frontline workers, featuring task management, communication tools, and workflow optimization for improved efficiency.',
+      technologies: ['Android', 'Kotlin', 'Task Management', 'Communication APIs', 'MVVM Architecture'],
       link: null,
       github: null,
-      logo: null,
-      featured: false
-    },
-    {
-      id: 6,
-      title: 'Fitness Tracker',
-      description: 'Comprehensive fitness tracking application with workout planning, progress monitoring, and health analytics. Features custom charts and data visualization.',
-      technologies: ['Flutter', 'Health APIs', 'Data Visualization', 'Local Storage', 'Charts'],
-      link: null,
-      github: null,
-      logo: null,
+      coverImage: '/projects/project_cover_frontliner.jpg',
       featured: false
     }
   ]

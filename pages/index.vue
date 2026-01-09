@@ -127,7 +127,7 @@
     </section>
 
     <!-- Featured Projects -->
-    <section class="py-16 sm:py-24">
+    <section class="py-16 sm:py-24 bg-gray-50">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
           <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Featured Projects</h2>
@@ -135,30 +135,27 @@
             Showcasing innovative mobile applications with cutting-edge technology
           </p>
         </div>
-        <div class="mx-auto mt-12 grid max-w-2xl auto-rows-fr grid-cols-1 gap-6 sm:mt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          <article 
-            v-for="project in featuredProjects" 
-            :key="project.title"
-            class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 pb-6 pt-64 sm:pt-48 lg:pt-64"
-          >
-            <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
-            <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
-            
-            <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
-              <div class="mr-8">{{ project.category }}</div>
-              <div class="-ml-4 flex items-center gap-x-4">
-                <svg viewBox="0 0 2 2" class="-ml-0.5 h-0.5 w-0.5 flex-none fill-white/50">
-                  <circle cx="1" cy="1" r="1" />
-                </svg>
-                <div class="flex gap-x-2.5">{{ project.status }}</div>
+        <div class="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-8 sm:mt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          <ClientOnly>
+            <template v-if="pending">
+              <div v-for="i in 3" :key="i" class="animate-pulse">
+                <div class="bg-gray-200 rounded-xl h-64"></div>
               </div>
-            </div>
-            <h3 class="mt-3 text-lg font-semibold leading-6 text-white">
-              <span class="absolute inset-0"></span>
-              {{ project.title }}
-            </h3>
-            <p class="mt-2 text-sm leading-6 text-gray-300">{{ project.description }}</p>
-          </article>
+            </template>
+            <template v-else>
+              <!-- Debug info -->
+              <div v-if="!featuredProjects || featuredProjects.length === 0" class="col-span-3 text-center text-gray-500">
+                No featured projects found. Total projects: {{ allProjects?.length || 0 }}
+                <div v-if="error" class="text-red-500 mt-2">Error: {{ error }}</div>
+              </div>
+              
+              <ProjectCard 
+                v-for="project in featuredProjects" 
+                :key="project.id"
+                :project="project"
+              />
+            </template>
+          </ClientOnly>
         </div>
         <div class="mt-12 text-center">
           <NuxtLink 
@@ -182,7 +179,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 // SEO
 useHead({
@@ -196,25 +193,10 @@ useHead({
   ]
 })
 
-// Featured projects data
-const featuredProjects = ref([
-  {
-    title: 'Niyog',
-    category: 'AI-Powered',
-    description: 'AI-based job matching platform with personalized recommendations and smart filtering for enhanced user experience.',
-    status: 'Live'
-  },
-  {
-    title: 'Blaze',
-    category: 'Identity Verification',
-    description: 'AI-powered identity verification with facial recognition and document scanning for secure authentication.',
-    status: 'Live'
-  },
-  {
-    title: 'MUV Ride-Sharing',
-    category: 'Transportation',
-    description: 'Complete ride-sharing platform with real-time tracking and dynamic pricing for seamless transportation.',
-    status: 'Live'
-  }
-])
+// Fetch projects and filter featured ones
+const { data: allProjects, error, pending } = await useLazyFetch('/api/projects')
+const featuredProjects = computed(() => {
+  if (!allProjects.value) return []
+  return allProjects.value.filter(project => project.featured)
+})
 </script>
