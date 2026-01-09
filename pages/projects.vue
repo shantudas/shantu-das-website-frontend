@@ -74,8 +74,8 @@ useHead({
   ]
 })
 
-// Fetch projects from API
-const { data: projectsData, error, pending } = await useLazyFetch('/api/projects')
+// Fetch projects from static JSON file (works with static deployment)
+const { data: projectsData, error, pending } = await useLazyFetch('/data/projects.json')
 
 // Ensure projects is always an array
 const projects = computed(() => {

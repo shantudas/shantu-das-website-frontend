@@ -196,7 +196,7 @@ useHead({
 })
 
 // Fetch projects and filter featured ones
-const { data: allProjects, error, pending } = await useLazyFetch('/api/projects')
+const { data: allProjects, error, pending } = await useLazyFetch('/data/projects.json')
 const featuredProjects = computed(() => {
   if (!allProjects.value || !Array.isArray(allProjects.value)) return []
   return allProjects.value.filter(project => project.featured)

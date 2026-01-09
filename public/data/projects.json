@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "Niyog",
+    "description": "AI-powered job matching platform that provides personalized job recommendations based on user skills and preferences. Features smart filtering, real-time notifications, and comprehensive job search capabilities with over 100,000+ downloads.",
+    "technologies": ["Android", "Kotlin", "AI Integration", "Clean Architecture", "Firebase"],
+    "link": "https://www.patrons.ltd/",
+    "github": null,
+    "coverImage": "/projects/project_cover_niyog.jpg",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "MUV",
+    "description": "Advanced mobility and transportation application with real-time tracking, route optimization, and seamless user experience. Built with modern Android architecture and clean design principles.",
+    "technologies": ["Android", "Kotlin", "Google Maps", "Real-time Tracking", "Material Design"],
+    "link": "https://www.patrons.ltd/",
+    "github": null,
+    "coverImage": "/projects/project_cover_muv.jpg",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": "MUV HRT",
+    "description": "Heart rate monitoring integration for the MUV platform, featuring health tracking, data analytics, and personalized insights for enhanced user wellness and safety.",
+    "technologies": ["Android", "Health APIs", "Data Analytics", "Heart Rate Monitoring", "Kotlin"],
+    "link": "https://www.patrons.ltd/",
+    "github": null,
+    "coverImage": "/projects/project_cover_muv_hrt.jpg",
+    "featured": true
+  },
+  {
+    "id": 4,
+    "title": "CoSpace",
+    "description": "Collaborative workspace application that enhances team productivity with shared workspaces, real-time collaboration tools, and seamless communication features.",
+    "technologies": ["Flutter", "Firebase", "Real-time Collaboration", "Cross-platform", "State Management"],
+    "link": null,
+    "github": null,
+    "coverImage": "/projects/project_cover_cospace.jpg",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "title": "Frontliner",
+    "description": "Essential services management platform designed for frontline workers, featuring task management, communication tools, and workflow optimization for improved efficiency.",
+    "technologies": ["Android", "Kotlin", "Task Management", "Communication APIs", "MVVM Architecture"],
+    "link": null,
+    "github": null,
+    "coverImage": "/projects/project_cover_frontliner.jpg",
+    "featured": false
+  }
+]
