@@ -22,7 +22,7 @@
     <!-- Content -->
     <div class="p-6">
       <!-- Technologies Badge -->
-      <div class="mb-3">
+      <div class="mb-3" v-if="project.technologies && project.technologies.length > 0">
         <span class="inline-flex items-center rounded-md bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
           {{ project.technologies[0] }}
         </span>
@@ -39,7 +39,7 @@
       </p>
 
       <!-- Technologies -->
-      <div class="mt-4 flex flex-wrap gap-1.5">
+      <div class="mt-4 flex flex-wrap gap-1.5" v-if="project.technologies && Array.isArray(project.technologies)">
         <span 
           v-for="tech in project.technologies.slice(0, 3)" 
           :key="tech"

@@ -180,6 +180,8 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+// Explicit import to avoid auto-import issues
+import ProjectCard from '~/components/ProjectCard.vue'
 
 // SEO
 useHead({
@@ -196,7 +198,7 @@ useHead({
 // Fetch projects and filter featured ones
 const { data: allProjects, error, pending } = await useLazyFetch('/api/projects')
 const featuredProjects = computed(() => {
-  if (!allProjects.value) return []
+  if (!allProjects.value || !Array.isArray(allProjects.value)) return []
   return allProjects.value.filter(project => project.featured)
 })
 </script>

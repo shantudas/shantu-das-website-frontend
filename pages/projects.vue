@@ -63,6 +63,9 @@
 </template>
 
 <script setup lang="ts">
+// Explicit import to avoid auto-import issues
+import ProjectCard from '~/components/ProjectCard.vue'
+
 // SEO
 useHead({
   title: 'Projects - Shantu Chandra Das',
@@ -72,5 +75,11 @@ useHead({
 })
 
 // Fetch projects from API
-const { data: projects, error, pending } = await useLazyFetch('/api/projects')
+const { data: projectsData, error, pending } = await useLazyFetch('/api/projects')
+
+// Ensure projects is always an array
+const projects = computed(() => {
+  if (!projectsData.value || !Array.isArray(projectsData.value)) return []
+  return projectsData.value
+})
 </script>
