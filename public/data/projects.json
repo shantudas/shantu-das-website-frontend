@@ -4,7 +4,7 @@
     "title": "Niyog",
     "description": "AI-powered job matching platform that provides personalized job recommendations based on user skills and preferences. Features smart filtering, real-time notifications, and comprehensive job search capabilities with over 100,000+ downloads.",
     "technologies": ["Android", "Kotlin", "AI Integration", "Clean Architecture", "Firebase"],
-    "link": "https://www.patrons.ltd/",
+    "link": "https://www.niyog.co/",
     "github": null,
     "coverImage": "/projects/project_cover_niyog.jpg",
     "featured": true
@@ -14,7 +14,7 @@
     "title": "MUV",
     "description": "Advanced mobility and transportation application with real-time tracking, route optimization, and seamless user experience. Built with modern Android architecture and clean design principles.",
     "technologies": ["Android", "Kotlin", "Google Maps", "Real-time Tracking", "Material Design"],
-    "link": "https://www.patrons.ltd/",
+    "link": null,
     "github": null,
     "coverImage": "/projects/project_cover_muv.jpg",
     "featured": true
@@ -24,19 +24,19 @@
     "title": "MUV HRT",
     "description": "Heart rate monitoring integration for the MUV platform, featuring health tracking, data analytics, and personalized insights for enhanced user wellness and safety.",
     "technologies": ["Android", "Health APIs", "Data Analytics", "Heart Rate Monitoring", "Kotlin"],
-    "link": "https://www.patrons.ltd/",
+    "link": null,
     "github": null,
     "coverImage": "/projects/project_cover_muv_hrt.jpg",
     "featured": true
   },
   {
     "id": 4,
-    "title": "CoSpace",
-    "description": "Collaborative workspace application that enhances team productivity with shared workspaces, real-time collaboration tools, and seamless communication features.",
-    "technologies": ["Flutter", "Firebase", "Real-time Collaboration", "Cross-platform", "State Management"],
-    "link": null,
+    "title": "GRID Furniture",
+    "description": "Modern furniture e-commerce platform for ergonomic office and home furniture. Features comprehensive product catalog, user-friendly shopping experience, and premium quality furniture solutions at budget-friendly costs. Serves 3,000+ customers with elegant designs.",
+    "technologies": ["Android", "Java", "MVVM", "Room", "E-commerce", "Material Design"],
+    "link": "https://99grid.com/",
     "github": null,
-    "coverImage": "/projects/project_cover_cospace.jpg",
+    "coverImage": "/projects/project_cover_grid.jpg",
     "featured": false
   },
   {

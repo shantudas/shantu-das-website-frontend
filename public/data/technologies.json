@@ -1,0 +1,69 @@
+{
+  "Mobile Development": [
+    { "name": "Android", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/android.svg" },
+    { "name": "Java", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/openjdk.svg" },
+    { "name": "Kotlin", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/kotlin.svg" },
+    { "name": "Flutter", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/flutter.svg" },
+    { "name": "Dart", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/dart.svg" },
+    { "name": "iOS", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/apple.svg" },
+    { "name": "Swift", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/swift.svg" }
+  ],
+
+  "Architecture & State Management": [
+    { "name": "Clean Architecture", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/archlinux.svg" },
+    { "name": "MVVM", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/android.svg" },
+    { "name": "BLoC", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/flutter.svg" },
+    { "name": "Provider", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/flutter.svg" },
+    { "name": "GetX", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/flutter.svg" },
+    { "name": "Hilt", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/android.svg" },
+    { "name": "Dagger", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/android.svg" }
+  ],
+
+  "API & Networking": [
+    { "name": "REST API", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/api.svg" },
+    { "name": "JSON", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/json.svg" },
+    { "name": "Retrofit", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/android.svg" },
+    { "name": "OkHttp", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/android.svg" },
+    { "name": "Dio", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/flutter.svg" }
+  ],
+
+  "Local Storage & Databases": [
+    { "name": "Room", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/android.svg" },
+    { "name": "SQLite", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/sqlite.svg" },
+    { "name": "Hive", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/flutter.svg" },
+    { "name": "MySQL", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mysql.svg" },
+    { "name": "PostgreSQL", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/postgresql.svg" },
+    { "name": "Redis", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/redis.svg" }
+  ],
+
+  "Backend & DevOps": [
+    { "name": "Laravel", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/laravel.svg" },
+    { "name": "PHP", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/php.svg" },
+    { "name": "Docker", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/docker.svg" },
+    { "name": "JWT", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/jsonwebtokens.svg" }
+  ],
+
+  "CI/CD & Distribution": [
+    { "name": "Git", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/git.svg" },
+    { "name": "GitHub", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" },
+    { "name": "GitHub Actions", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/githubactions.svg" },
+    { "name": "Gradle", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gradle.svg" },
+    { "name": "Fastlane", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/fastlane.svg" }
+  ],
+
+  "Maps, Location & Realtime": [
+    { "name": "Google Maps", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googlemaps.svg" },
+    { "name": "Firebase", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/firebase.svg" }
+  ],
+
+  "Analytics & Monitoring": [
+    { "name": "Firebase Analytics", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/firebase.svg" },
+    { "name": "Crashlytics", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/firebase.svg" }
+  ],
+
+  "Testing": [
+    { "name": "JUnit", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/junit5.svg" },
+    { "name": "Mockito", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mockito.svg" },
+    { "name": "Espresso", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/android.svg" }
+  ]
+}
