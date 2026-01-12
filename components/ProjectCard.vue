@@ -1,9 +1,10 @@
 <template>
-  <article 
-    class="group relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+  <NuxtLink 
+    :to="`/projects/${project.slug}`"
+    class="group relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 block"
   >
     <!-- Cover Image -->
-    <div class="aspect-[16/9] overflow-hidden">
+    <div class="aspect-[16/9] overflow-hidden relative">
       <img 
         :src="project.coverImage" 
         :alt="project.title"
@@ -57,38 +58,25 @@
 
       <!-- Action Button -->
       <div class="mt-4 pt-4 border-t border-gray-100">
-        <a 
-          v-if="project.link"
-          :href="project.link" 
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-x-1.5 text-sm font-medium text-blue-600 hover:text-blue-500 transition-colors"
-        >
-          View Project
-          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
+        <span class="inline-flex items-center gap-x-1.5 text-sm font-medium text-blue-600 group-hover:text-blue-500 transition-colors">
+          View Details
+          <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
           </svg>
-        </a>
-        <span 
-          v-else
-          class="inline-flex items-center gap-x-1.5 text-sm font-medium text-gray-400"
-        >
-          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
-          </svg>
-          Coming Soon
         </span>
       </div>
     </div>
-  </article>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
 interface Project {
   id: number
+  slug: string
   title: string
   description: string
   technologies: string[]
+  features?: string[]
   link?: string | null
   github?: string | null
   coverImage: string
