@@ -107,7 +107,7 @@
                   </svg>
                 </a>
                 <a 
-                  href="https://linkedin.com/in/shantu-das" 
+                  href="https://linkedin.com/in/shantuchandradas" 
                   target="_blank"
                   class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
                 >

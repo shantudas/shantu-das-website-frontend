@@ -6,7 +6,7 @@
           <p class="text-gray-600 text-sm">
             © {{ currentYear }} Shantu Das. All rights reserved.
           </p>
-          <div class="flex space-x-4">
+          <!-- <div class="flex space-x-4">
             <a href="https://github.com/shantudas" target="_blank"
               class="text-gray-400 hover:text-gray-600 transition-colors">
               <Github class="w-5 h-5" />
@@ -15,7 +15,7 @@
               class="text-gray-400 hover:text-gray-600 transition-colors">
               <Linkedin class="w-5 h-5" />
             </a>
-          </div>
+          </div> -->
         </div>
         <p class="text-gray-500 text-sm">
           Crafted with ❤️ & ☕
