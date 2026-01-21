@@ -18,6 +18,13 @@
           Projects
         </NuxtLink>
         <NuxtLink 
+          to="/articles"
+          class="text-gray-800 hover:text-gray-900 transition-colors font-medium text-sm [text-shadow:0_1px_2px_rgba(255,255,255,0.8)]"
+          :class="{ 'text-gray-900 font-semibold': $route.path === '/articles' }"
+        >
+          Articles
+        </NuxtLink>
+        <NuxtLink 
           to="/contact"
           class="text-gray-800 hover:text-gray-900 transition-colors font-medium text-sm [text-shadow:0_1px_2px_rgba(255,255,255,0.8)]"
           :class="{ 'text-gray-900 font-semibold': $route.path === '/contact' }"
@@ -41,6 +48,13 @@
           :class="{ 'text-gray-900 font-semibold': $route.path === '/projects' }"
         >
           Projects
+        </NuxtLink>
+        <NuxtLink 
+          to="/articles"
+          class="text-gray-800 hover:text-gray-900 transition-colors font-medium text-sm [text-shadow:0_1px_2px_rgba(255,255,255,0.8)]"
+          :class="{ 'text-gray-900 font-semibold': $route.path === '/articles' }"
+        >
+          Articles
         </NuxtLink>
         <NuxtLink 
           to="/contact"

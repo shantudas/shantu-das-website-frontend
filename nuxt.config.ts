@@ -11,7 +11,20 @@ export default defineNuxtConfig({
 
   css: ["./assets/css/main.css"],
 
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts", "@vueuse/nuxt"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts", "@vueuse/nuxt", "@nuxt/content"],
+
+  content: {
+    api: {
+      baseURL: '/api/_content'
+    },
+    highlight: {
+      theme: {
+        default: 'github-light',
+        dark: 'github-dark'
+      },
+      preload: ['dart', 'javascript', 'typescript', 'vue']
+    }
+  },
 
   googleFonts: {
     families: {
