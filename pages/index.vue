@@ -693,6 +693,75 @@
       </div>
     </section>
 
+    <!-- LinkedIn Recommendations Section -->
+    <section class="relative py-24 sm:py-32 overflow-hidden bg-gradient-to-br from-slate-50 via-indigo-50/30 to-purple-50/40">
+      <!-- Background Elements -->
+      <div class="absolute top-1/4 right-1/4 h-96 w-96 translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-indigo-400/20 to-purple-400/20 blur-3xl"></div>
+      <div class="absolute bottom-1/4 left-1/4 h-96 w-96 -translate-x-1/2 translate-y-1/2 rounded-full bg-gradient-to-br from-purple-400/20 to-pink-400/20 blur-3xl"></div>
+      
+      <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <div class="inline-flex items-center rounded-full bg-gradient-to-r from-indigo-50 to-purple-50 px-4 py-2 mb-8 border border-indigo-200/50">
+            <svg class="mr-2 h-5 w-5 text-indigo-600" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            <span class="text-sm font-semibold text-indigo-900">Professional Testimonials</span>
+          </div>
+          <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            LinkedIn 
+            <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Recommendations
+            </span>
+          </h2>
+          <p class="mt-6 text-xl leading-8 text-gray-600 max-w-2xl mx-auto">
+            What colleagues and industry professionals say about working with me
+          </p>
+        </div>
+
+        <!-- Recommendations Carousel -->
+        <div class="mx-auto mt-12 sm:mt-16">
+          <ClientOnly>
+            <template v-if="recommendationsPending">
+              <div class="animate-pulse">
+                <div class="bg-gray-200 rounded-3xl h-96 max-w-4xl mx-auto"></div>
+              </div>
+            </template>
+            <template v-else>
+              <div v-if="!recommendations || recommendations.length === 0" class="text-center text-gray-500">
+                No recommendations available.
+                <div v-if="recommendationsError" class="text-red-500 mt-2">Error: {{ recommendationsError }}</div>
+              </div>
+              
+              <RecommendationCarousel 
+                v-else
+                :recommendations="recommendations"
+                :autoplay="true"
+                :autoplay-delay="6000"
+              />
+            </template>
+          </ClientOnly>
+        </div>
+
+        <!-- View All on LinkedIn Button -->
+        <div class="mt-12 text-center">
+          <a 
+            href="https://www.linkedin.com/in/shantuchandradas/details/recommendations/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-x-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-lg hover:shadow-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 hover:scale-105"
+          >
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            View All Recommendations on LinkedIn
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- Featured Projects -->
     <section class="py-24 sm:py-32 bg-gray-50">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -760,6 +829,7 @@
 import { ref, computed } from 'vue'
 // Explicit import to avoid auto-import issues
 import ProjectCard from '~/components/ProjectCard.vue'
+import RecommendationCarousel from '~/components/RecommendationCarousel.vue'
 
 // Define interfaces for type safety
 interface Technology {
@@ -807,13 +877,18 @@ useHead({
 })
 
 // Fetch projects and filter featured ones
-const { data: allProjects } = await useAsyncData('projects', () => 
+const { data: allProjects, pending, error } = await useAsyncData('projects', () => 
   $fetch('/api/projects')
 )
 const featuredProjects = computed(() => {
   if (!allProjects.value || !Array.isArray(allProjects.value)) return []
   return allProjects.value.filter(project => project.featured)
 })
+
+// Fetch recommendations data
+const { data: recommendations, pending: recommendationsPending, error: recommendationsError } = await useAsyncData('recommendations', () => 
+  $fetch('/api/recommendations')
+)
 
 // Fetch technologies data with proper typing
 const { data: technologiesData } = await useAsyncData('technologies', () => 
