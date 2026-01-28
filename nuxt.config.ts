@@ -3,15 +3,17 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
 
-  ssr: false,
-
   nitro: {
     preset: "static",
+    prerender: {
+      routes: ["/"],
+      crawlLinks: true
+    }
   },
 
   css: ["./assets/css/main.css"],
 
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts", "@vueuse/nuxt", "@nuxt/content"],
+  modules: ["@nuxtjs/google-fonts", "@vueuse/nuxt", "@nuxt/content", "@nuxt/ui", "@nuxt/image"],
 
   content: {
     api: {

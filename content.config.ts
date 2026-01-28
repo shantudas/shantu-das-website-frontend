@@ -2,27 +2,22 @@ import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
 export default defineContentConfig({
   collections: {
-    content: defineCollection({
+    articles: defineCollection({
       type: 'page',
-      source: '**/*.md',
+      source: 'articles/*.md',
       schema: z.object({
-        id: z.string(),
-        slug: z.string(),
         title: z.string(),
         description: z.string(),
         date: z.string(),
-        author: z.string(),
-        category: z.string(),
-        tags: z.array(z.string()),
-        readingTime: z.string(),
-        navigation: z.object({
-          title: z.string().optional(),
-          description: z.string().optional(),
-        }).optional(),
-        excerpt: z.object({
-          type: z.string(),
-          children: z.any(),
-        }).optional(),
+        image: z.string(),
+        minRead: z.number(),
+        author: z.object({
+          name: z.string(),
+          avatar: z.object({
+            src: z.string(),
+            alt: z.string()
+          }).optional()
+        })
       })
     })
   }

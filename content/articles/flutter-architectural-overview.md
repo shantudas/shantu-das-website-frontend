@@ -1,18 +1,14 @@
 ---
-id: flutter-architectural-overview
-slug: flutter-architectural-overview
-title: Flutter Architectural Overview: Framework, Engine, and Embedder Explained
-description: A deep dive into Flutter's three-layer architecture — Framework, Engine, and Embedder — and how they work together to deliver high-performance cross-platform applications.
-author: Shantu Chandra Das
-category: Flutter
-tags:
-  - Flutter
-  - Mobile Architecture
-  - Cross-Platform
-  - Dart
-  - Flutter Engine
-publishedAt: 2026-01-21
-readingTime: 8 min
+title: "Flutter Architectural Overview: Framework, Engine, and Embedder Explained"
+description: "A deep dive into Flutter's three-layer architecture — Framework, Engine, and Embedder — and how they work together to deliver high-performance cross-platform applications."
+date: "2026-01-21"
+image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+minRead: 8
+author:
+  name: "Shantu Chandra Das"
+  avatar:
+    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    alt: "Shantu Chandra Das"
 ---
 
 ## Introduction

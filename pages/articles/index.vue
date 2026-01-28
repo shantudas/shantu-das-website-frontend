@@ -20,56 +20,67 @@
     </section>
 
     <!-- Articles Grid -->
-    <section class="py-24 sm:py-32">
+    <section class="py-24 sm:py-32 bg-gray-50">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl lg:max-w-none">
-          <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-            <article
-              v-for="article in articles"
-              :key="article.id"
-              class="group relative flex flex-col items-start p-6 bg-white rounded-2xl shadow-sm ring-1 ring-gray-200 hover:shadow-lg hover:ring-gray-300 transition-all duration-200"
-            >
-              <div class="flex items-center gap-x-4 text-xs mb-4">
-                <time :datetime="article.publishedAt" class="text-gray-500">
-                  {{ formatDate(article.publishedAt) }}
-                </time>
-                <span class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
-                  {{ article.category }}
-                </span>
-                <span class="text-gray-400">•</span>
-                <span class="text-gray-500">{{ article.readingTime }}</span>
+        <div class="mx-auto max-w-2xl text-center mb-16">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            All Articles
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-gray-600">
+            Technical insights and experiences from the field
+          </p>
+        </div>
+        
+        <div class="mx-auto grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          <ClientOnly>
+            <template v-if="!articles || articles.length === 0">
+              <div class="col-span-3 text-center text-gray-500">
+                No articles found.
               </div>
-
-              <h3 class="text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                <NuxtLink :to="`/articles/${article.slug}`">
-                  <span class="absolute inset-0"></span>
-                  {{ article.title }}
-                </NuxtLink>
-              </h3>
-
-              <p class="mt-3 text-sm leading-6 text-gray-600 line-clamp-3">
-                {{ article.description }}
-              </p>
-
-              <!-- <div class="mt-4 flex items-center gap-x-4">
-                <div class="text-sm leading-6">
-                  <p class="font-semibold text-gray-900">
-                    {{ article.author }}
-                  </p>
+            </template>
+            <template v-else>
+              <article
+                v-for="article in articles"
+                :key="article.id"
+                class="group relative flex flex-col items-start p-6 bg-white rounded-2xl shadow-sm ring-1 ring-gray-200 hover:shadow-lg hover:ring-gray-300 transition-all duration-200"
+              >
+                <div v-if="article.image" class="relative w-full mb-4 overflow-hidden rounded-lg">
+                  <img
+                    :src="article.image"
+                    :alt="article.title"
+                    class="w-full h-48 object-cover transition-transform duration-200 group-hover:scale-105"
+                  />
                 </div>
-              </div> -->
 
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span
-                  v-for="tag in article.tags.slice(0, 3)"
-                  :key="tag"
-                  class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
-                >
-                  {{ tag }}
-                </span>
-              </div>
-            </article>
-          </div>
+                <div class="flex items-center gap-x-4 text-xs mb-4">
+                  <time v-if="article.date" :datetime="article.date" class="text-gray-500">
+                    {{ formatDate(article.date) }}
+                  </time>
+                  <span v-if="article.minRead" class="text-gray-400">•</span>
+                  <span v-if="article.minRead" class="text-gray-500">{{ article.minRead }} min read</span>
+                </div>
+
+                <h3 class="text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                  <NuxtLink :to="article.path">
+                    <span class="absolute inset-0"></span>
+                    {{ article.title }}
+                  </NuxtLink>
+                </h3>
+
+                <p class="mt-3 text-sm leading-6 text-gray-600 line-clamp-3">
+                  {{ article.description }}
+                </p>
+
+                <div v-if="article.author && article.author.name" class="mt-4 flex items-center gap-x-4">
+                  <div class="text-sm leading-6">
+                    <p class="font-semibold text-gray-900">
+                      {{ article.author.name }}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </template>
+          </ClientOnly>
         </div>
       </div>
     </section>
@@ -83,68 +94,23 @@
 
 <script setup lang="ts">
 // SEO
-useHead({
+useSeoMeta({
   title: 'Articles - Shantu Chandra Das',
-  meta: [
-    { name: 'description', content: 'Technical articles and insights about mobile development, AI integration, and Clean Architecture by Shantu Chandra Das.' }
-  ]
+  description: 'Technical articles and insights about mobile development, AI integration, and Clean Architecture by Shantu Chandra Das.'
 })
 
-// Load articles using import.meta.glob
-const articles = ref([])
-
-const loadArticles = () => {
-  const articleModules = import.meta.glob(
-    '/content/articles/*.md',
-    {
-      query: '?raw',
-      import: 'default',
-      eager: true
-    }
-  )
-
-  articles.value = Object.entries(articleModules).map(([path, content]) => {
-    const frontmatter = parseFrontmatter(content)
-
-    return {
-      ...frontmatter,
-      _path: path,
-      body: content.replace(/^---[\s\S]*?---\n/, '')
-    }
-  })
-}
-
-
-// Parse YAML frontmatter
-const parseFrontmatter = (content: string) => {
-  const match = content.match(/^---\n([\s\S]*?)\n---/)
-  if (!match) return {}
-
-  const frontmatter = match[1]
-  const lines = frontmatter.split('\n')
-  const result = {}
-
-  for (const line of lines) {
-    const [key, ...valueParts] = line.split(':')
-    if (key && valueParts.length > 0) {
-      const value = valueParts.join(':').trim()
-      if (value.startsWith('[') && value.endsWith(']')) {
-        // Parse array
-        result[key.trim()] = value.slice(1, -1).split(',').map(item => item.trim().replace(/"/g, ''))
-      } else {
-        result[key.trim()] = value.replace(/"/g, '')
-      }
-    }
+// Fetch articles using Nuxt Content
+const { data: articles } = await useAsyncData('articles', async () => {
+  try {
+    const result = await queryCollection('articles').order('date', 'DESC').all()
+    return result
+  } catch (error) {
+    console.error('Error fetching articles:', error)
+    return []
   }
-
-  return result
-}
-
-onMounted(async () => {
-  await loadArticles()
 })
 
-const formatDate = (dateString: string) => {
+const formatDate = (dateString: string | Date) => {
   const date = new Date(dateString)
   return date.toLocaleDateString('en-US', {
     year: 'numeric',

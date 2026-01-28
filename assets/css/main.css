@@ -1,6 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@source "../../content/**/*";
+
+@theme static {
+  --font-sans: 'Public Sans', sans-serif;
+  --font-serif: 'Instrument Serif', serif;
+}
+
+:root {
+  --ui-container: var(--container-4xl);
+
+  ::selection {
+    color: #282a30;
+    background-color: #c8c8c8;
+  }
+}
+
+.dark {
+  ::selection {
+    color: #ffffff;
+    background-color: #474747;
+  }
+}
 
 /* Custom animations */
 @keyframes float {
@@ -9,8 +31,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 5px theme('colors.blue.500'); }
-  50% { box-shadow: 0 0 20px theme('colors.blue.500'), 0 0 30px theme('colors.blue.400'); }
+  0%, 100% { box-shadow: 0 0 5px #3b82f6; }
+  50% { box-shadow: 0 0 20px #3b82f6, 0 0 30px #60a5fa; }
 }
 
 .animate-float {
@@ -23,7 +45,10 @@
 
 /* Gradient text */
 .gradient-text {
-  @apply bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent;
+  background: linear-gradient(to right, #2563eb, #9333ea, #0891b2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Glass morphism */
