@@ -217,7 +217,9 @@ const route = useRoute()
 const slug = route.params.slug as string
 
 // Fetch all projects
-const { data: projectsData, error, pending } = await useLazyFetch('/data/projects.json')
+const { data: projectsData, error, pending } = await useAsyncData('projects', () => 
+  $fetch('/api/projects')
+)
 
 // Find the project by slug
 const project = computed(() => {

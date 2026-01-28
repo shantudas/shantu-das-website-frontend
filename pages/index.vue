@@ -807,14 +807,18 @@ useHead({
 })
 
 // Fetch projects and filter featured ones
-const { data: allProjects, error, pending } = await useLazyFetch('/data/projects.json')
+const { data: allProjects } = await useAsyncData('projects', () => 
+  $fetch('/api/projects')
+)
 const featuredProjects = computed(() => {
   if (!allProjects.value || !Array.isArray(allProjects.value)) return []
   return allProjects.value.filter(project => project.featured)
 })
 
 // Fetch technologies data with proper typing
-const { data: technologiesData, error: technologiesError, pending: technologiesPending } = await useLazyFetch<TechnologiesData>('/data/technologies.json')
+const { data: technologiesData } = await useAsyncData('technologies', () => 
+  $fetch<TechnologiesData>('/api/technologies')
+)
 
 // Create computed property for technologies with fallbacks
 const technologies = computed(() => {
