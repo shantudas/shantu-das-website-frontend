@@ -11,6 +11,7 @@ export default defineContentConfig({
         date: z.string(),
         image: z.string(),
         minRead: z.number(),
+        tags: z.array(z.string()).optional(),
         author: z.object({
           name: z.string(),
           avatar: z.object({

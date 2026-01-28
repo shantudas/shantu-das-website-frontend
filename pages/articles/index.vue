@@ -71,12 +71,15 @@
                   {{ article.description }}
                 </p>
 
-                <div v-if="article.author && article.author.name" class="mt-4 flex items-center gap-x-4">
-                  <div class="text-sm leading-6">
-                    <p class="font-semibold text-gray-900">
-                      {{ article.author.name }}
-                    </p>
-                  </div>
+                <!-- article tags -->
+                <div v-if="article.tags && article.tags.length > 0" class="mt-4 flex flex-wrap gap-2">
+                  <span
+                    v-for="tag in article.tags"
+                    :key="tag"
+                    class="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
+                  >
+                    {{ tag }}
+                  </span>
                 </div>
               </article>
             </template>

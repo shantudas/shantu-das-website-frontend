@@ -26,10 +26,16 @@
           <p class="text-gray-600 text-center max-w-2xl mx-auto text-lg mb-4">
             {{ page.description }}
           </p>
-          <div v-if="page.author" class="flex items-center justify-center gap-2">
-            <img v-if="page.author.avatar" :src="page.author.avatar.src" :alt="page.author.name"
-              class="w-10 h-10 rounded-full" />
-            <span class="text-sm font-medium text-gray-900">{{ page.author.name }}</span>
+  
+          <!-- article tags -->
+          <div v-if="page.tags && page.tags.length > 0" class="flex flex-wrap gap-2 justify-center mt-6">
+            <span
+              v-for="tag in page.tags"
+              :key="tag"
+              class="inline-flex items-center rounded-full bg-blue-50 px-3 py-1.5 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
+            >
+              {{ tag }}
+            </span>
           </div>
         </div>
 
@@ -42,7 +48,7 @@
 
           <!-- Table of Contents Sidebar -->
           <aside class="hidden lg:block">
-            <div class="sticky top-24 bg-gray-50 border border-gray-200 px-6 rounded-lg">
+            <div class="sticky top-24 bg-gray-50 border border-gray-200 px-6 py-2 rounded-lg">
               <UContentToc :links="page.body?.toc?.links || []" class="text-sm" />
             </div>
           </aside>
