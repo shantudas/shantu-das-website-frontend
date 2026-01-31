@@ -10,6 +10,9 @@
         <!-- Centered Article Header -->
         <div class="max-w-4xl mx-auto mb-12">
           <div class="flex text-xs text-gray-500 items-center justify-center gap-2 mb-4">
+            <span v-if="page.series" class="inline-flex items-center rounded-full bg-purple-50 px-3 py-1.5 text-xs font-semibold text-purple-700 ring-1 ring-inset ring-purple-700/10">
+              {{ page.series }}
+            </span>
             <span v-if="page.date">
               {{ formatDate(page.date) }}
             </span>
@@ -19,7 +22,7 @@
             </span>
           </div>
           <NuxtImg v-if="page.image" :src="page.image" :alt="page.title"
-            class="rounded-lg w-full h-[400px] object-cover object-center mb-6" />
+            class="rounded-lg w-full h-full object-fill object-center mb-6" />
           <h1 class="text-4xl text-center font-bold max-w-3xl mx-auto mb-4">
             {{ page.title }}
           </h1>
@@ -42,7 +45,7 @@
         <!-- Two Column Layout: Content + TOC -->
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 max-w-6xl mx-auto">
           <!-- Main Content -->
-          <div class="prose prose-gray max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-p:text-gray-700 prose-p:leading-relaxed border border-gray-200 px-6 rounded-lg bg-white">
+          <div class="prose prose-gray max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-p:text-gray-700 prose-p:leading-relaxed border border-gray-200 px-6 py-6 rounded-lg bg-white">
             <ContentRenderer v-if="page.body" :value="page" />
           </div>
 
@@ -55,8 +58,13 @@
         </div>
 
         <!-- Navigation to Previous/Next Articles -->
-        <div class="mt-16 mb-12 max-w-6xl mx-auto">
-          <UContentSurround :surround="surround" />
+        <div v-if="filteredSurround.length > 0 && (filteredSurround[0] || filteredSurround[1])" class="mt-16 mb-12 max-w-6xl mx-auto">
+          <div v-if="page.series" class="text-center mb-6">
+            <span class="inline-flex items-center rounded-full bg-purple-50 px-4 py-2 text-sm font-semibold text-purple-700 ring-1 ring-inset ring-purple-700/10">
+              More from {{ page.series }}
+            </span>
+          </div>
+          <UContentSurround :surround="filteredSurround" />
         </div>
       </UPage>
     </UContainer>
@@ -76,11 +84,50 @@ const { data: page } = await useAsyncData(`article-${slug}`, () =>
 )
 if (!page.value) throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 
-const { data: surround } = await useAsyncData(`${slug}-surround`, () =>
-  queryCollectionItemSurroundings('articles', `/articles/${slug}`, {
-    fields: ['description']
-  })
+// Get all published articles for surround navigation
+const { data: allArticles } = await useAsyncData('all-articles', () =>
+  queryCollection('articles')
+    .where('status', '=', 'published')
+    .order('date', 'DESC')
+    .all()
 )
+
+// Filter and create surround navigation based on series
+const filteredSurround = computed(() => {
+  if (!allArticles.value || !page.value) return []
+  
+  const currentSeries = page.value.series
+  const currentPath = page.value.path
+  
+  // Filter articles based on series
+  let articles = allArticles.value
+  if (currentSeries) {
+    articles = articles.filter((article: any) => article.series === currentSeries)
+  }
+  
+  // Find current article index
+  const currentIndex = articles.findIndex((article: any) => article.path === currentPath)
+  if (currentIndex === -1) return []
+  
+  // Create surround array [prev, next]
+  const surround: any[] = []
+  
+  // Previous article
+  if (currentIndex > 0) {
+    surround[0] = articles[currentIndex - 1]
+  } else {
+    surround[0] = null
+  }
+  
+  // Next article
+  if (currentIndex < articles.length - 1) {
+    surround[1] = articles[currentIndex + 1]
+  } else {
+    surround[1] = null
+  }
+  
+  return surround
+})
 
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation', ref([]))
 const articlesNavigation = computed(() => navigation.value.find(item => item.path === '/articles')?.children || [])

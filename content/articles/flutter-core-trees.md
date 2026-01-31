@@ -4,6 +4,8 @@ description: "A deep dive into Flutter's three core UI trees—Widget, Element, 
 date: "2026-01-24"
 image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 minRead: 10
+status: draft
+series: "Flutter Basics"
 tags:
   - Flutter
   - Architecture

@@ -53,6 +53,9 @@
                 </div>
 
                 <div class="flex items-center gap-x-4 text-xs mb-4">
+                  <span v-if="article.series" class="inline-flex items-center rounded-full bg-purple-50 px-2.5 py-1 text-xs font-semibold text-purple-700 ring-1 ring-inset ring-purple-700/10">
+                    {{ article.series }}
+                  </span>
                   <time v-if="article.date" :datetime="article.date" class="text-gray-500">
                     {{ formatDate(article.date) }}
                   </time>
@@ -102,10 +105,13 @@ useSeoMeta({
   description: 'Technical articles and insights about mobile development, AI integration, and Clean Architecture by Shantu Chandra Das.'
 })
 
-// Fetch articles using Nuxt Content
+// Fetch articles using Nuxt Content (only published)
 const { data: articles } = await useAsyncData('articles', async () => {
   try {
-    const result = await queryCollection('articles').order('date', 'DESC').all()
+    const result = await queryCollection('articles')
+      .where('status', '=', 'published')
+      .order('date', 'DESC')
+      .all()
     return result
   } catch (error) {
     console.error('Error fetching articles:', error)

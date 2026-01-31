@@ -9,8 +9,10 @@ export default defineContentConfig({
         title: z.string(),
         description: z.string(),
         date: z.string(),
-        image: z.string(),
-        minRead: z.number(),
+        image: z.string().optional(),
+        minRead: z.number().optional(),
+        status: z.enum(['draft', 'published']).optional(),
+        series: z.string().optional(),
         tags: z.array(z.string()).optional(),
         author: z.object({
           name: z.string(),
@@ -18,7 +20,7 @@ export default defineContentConfig({
             src: z.string(),
             alt: z.string()
           }).optional()
-        })
+        }).optional()
       })
     })
   }
